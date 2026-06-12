@@ -550,38 +550,7 @@ section { padding: 5rem 0; }
   opacity: 0.7;
 }
 
-/* ─── HOW TO POST (admin guide hidden visually but in page) ─── */
-.update-guide {
-  background: var(--forest);
-  border-radius: 20px;
-  padding: 2.5rem 3rem;
-  margin-top: 3rem;
-  border: 1px solid rgba(201,169,110,0.2);
-}
-.update-guide-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  color: var(--gold-light);
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.update-guide-title::before { content: '📝'; }
-.update-steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.update-step { }
-.step-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  color: rgba(201,169,110,0.3);
-  margin-bottom: 0.4rem;
-}
-.step-title { font-size: 0.875rem; font-weight: 500; color: var(--white); margin-bottom: 0.3rem; }
-.step-desc { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
 
 /* ─── REVIEWS ─── */
 #reviews { background: var(--cream); }
@@ -949,27 +918,7 @@ footer {
 
     <div class="blog-grid" id="blog-grid"></div>
 
-    <!-- HOW TO UPDATE GUIDE -->
-    <div class="update-guide">
-      <div class="update-guide-title">คู่มืออัปเดตบทความ — สำหรับเจ้าของฟาร์ม (แก้แค่ไฟล์ data.js)</div>
-      <div class="update-steps">
-        <div class="update-step">
-          <div class="step-num">01</div>
-          <div class="step-title">เขียนบทความใน WordPress แล้ว Publish</div>
-          <p class="step-desc">forfernfarm.wordpress.com/wp-admin → Posts → Add New → เขียน → กด Publish</p>
-        </div>
-        <div class="update-step">
-          <div class="step-num">02</div>
-          <div class="step-title">เปิดไฟล์ data.js → หาส่วน BLOG_POSTS</div>
-          <p class="step-desc">copy block ตัวอย่างที่ comment ไว้ → ใส่ชื่อบทความ / URL / รูป / วันที่</p>
-        </div>
-        <div class="update-step">
-          <div class="step-num">03</div>
-          <div class="step-title">Save ไฟล์ → อัปโหลดขึ้น GitHub → เว็บอัปเดตทันที</div>
-          <p class="step-desc">ไม่ต้องแตะ index.html เลย แก้แค่ data.js ไฟล์เดียวพอ</p>
-        </div>
-      </div>
-    </div>
+
   </div>
 </section>
 
