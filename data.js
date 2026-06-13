@@ -94,11 +94,11 @@ const BLOG_POSTS = [
     img: "https://img1.pic.in.th/images/_41912438d90ae4128c.jpg",
   },
   {
-    title: "ร้อนสลับฝน อบอ้าวสุดๆ… เฟิร์นสไบนางจะรอดไหม?",
+    title: "ร้อนสลับฝน แต่อบอ้าวสุดๆ… เฟิร์นสไบนางจะรอดไหม?",
     category: "เคล็ดลับ",
     excerpt: "3 เทคนิคดูแลเฟิร์นในช่วงอากาศแปรปรวน ลมสำคัญกว่าน้ำในวันที่ชื้น...",
     date: "9 พฤษภาคม 2026",
-    url: "https://forfernfarm.wordpress.com/2026/05/09/ร้อนสลับฝน/",
+    url: "https://forfernfarm.wordpress.com/2026/05/09/%f0%9f%8c%a6%ef%b8%8f-%e0%b8%a3%e0%b9%89%e0%b8%ad%e0%b8%99%e0%b8%aa%e0%b8%a5%e0%b8%b1%e0%b8%9a%e0%b8%9d%e0%b8%99-%e0%b9%81%e0%b8%95%e0%b9%88%e0%b8%ad%e0%b8%9a%e0%b8%ad%e0%b9%89%e0%b8%b2%e0%b8%a7/",
     img: "https://forfernfarm.wordpress.com/wp-content/uploads/2026/04/e0b980e0b89fe0b8b4e0b8a3e0b98ce0b899e0b8aae0b984e0b89ae0b899e0b8b2e0b887_2.jpg",
   },
   {
@@ -106,7 +106,7 @@ const BLOG_POSTS = [
     category: "คู่มือ",
     excerpt: "3 จุดเช็กที่คุณต้องรู้ก่อนซื้อ ทำไมไม้ป่าราคาถูกถึงอาจแพงกว่าในระยะยาว...",
     date: "3 พฤษภาคม 2026",
-    url: "https://forfernfarm.wordpress.com/2026/05/03/the-ultimate-guide/",
+    url: "https://forfernfarm.wordpress.com/2026/05/03/the-ultimate-guide-%e0%b8%a7%e0%b8%b4%e0%b8%98%e0%b8%b5%e0%b9%80%e0%b8%a5%e0%b8%b7%e0%b8%ad%e0%b8%81%e0%b8%8b%e0%b8%b7%e0%b9%89%e0%b8%ad%e0%b9%80%e0%b8%9f%e0%b8%b4%e0%b8%a3%e0%b9%8c%e0%b8%99%e0%b8%aa/",
     img: "https://img2.pic.in.th/_26c58b1f6a56b4282c.jpg",
   },
 
