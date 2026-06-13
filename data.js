@@ -157,7 +157,7 @@ const REVIEWS = [
 //    3. วางลิงก์แทน URL เดิมด้านล่าง
 // ─────────────────────────────────────────────
 const IMAGES = {
-  hero:    "https://forfernfarm.wordpress.com/wp-content/uploads/2026/04/e0b980e0b89fe0b8b4e0b8a3e0b98ce0b899e0b8aae0b984e0b89ae0b899e0b8b2e0b887_42.jpg",
+  hero:    "https://img1.pic.in.th/images/_31.jpg",
   why:     "https://forfernfarm.wordpress.com/wp-content/uploads/2026/04/e0b980e0b89fe0b8b4e0b8a3e0b98ce0b899e0b8aae0b984e0b89ae0b899e0b8b2e0b887_11-1.jpg",
 };
 
