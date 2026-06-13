@@ -236,12 +236,16 @@ nav.scrolled { box-shadow: 0 2px 20px rgba(26,58,42,0.12); }
   position: relative;
   overflow: hidden;
   background: var(--forest-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hero-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.85;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0.95;
   transition: transform 0.8s ease;
 }
 .hero-image:hover img { transform: scale(1.03); }
@@ -328,14 +332,18 @@ section { padding: 5rem 0; }
 }
 
 .product-img {
-  height: 240px;
+  aspect-ratio: 4/5;
   overflow: hidden;
   background: var(--forest-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .product-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   transition: transform 0.5s;
 }
 .product-card:hover .product-img img { transform: scale(1.06); }
@@ -491,7 +499,7 @@ section { padding: 5rem 0; }
 
 .blog-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -510,11 +518,14 @@ section { padding: 5rem 0; }
 }
 
 .blog-img {
-  height: 200px;
+  aspect-ratio: 4/3;
   background: var(--forest-mid);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.blog-card.featured .blog-img { height: 260px; }
+.blog-card.featured .blog-img { aspect-ratio: 4/3; }
 .blog-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
 .blog-card:hover .blog-img img { transform: scale(1.05); }
 
@@ -971,9 +982,9 @@ footer {
       <div>
         <div class="footer-col-title">บทความ</div>
         <ul class="footer-links">
-          <li><a href="https://forfernfarm.wordpress.com" target="_blank">ความรู้เรื่องเฟิร์น</a></li>
-          <li><a href="https://forfernfarm.wordpress.com" target="_blank">เทคนิคการดูแล</a></li>
-          <li><a href="https://forfernfarm.wordpress.com" target="_blank">แรงบันดาลใจ</a></li>
+          <li><a href="https://forfernfarm.wordpress.com/2026/05/24/%f0%9f%8c%a6%ef%b8%8f-%e0%b8%a3%e0%b9%89%e0%b8%ad%e0%b8%99%e0%b8%aa%e0%b8%a5%e0%b8%b1%e0%b8%9a%e0%b8%9d%e0%b8%99-%e0%b9%81%e0%b8%95%e0%b9%88%e0%b8%ad%e0%b8%9a%e0%b8%ad%e0%b9%89%e0%b8%b2%e0%b8%a7-2/" target="_blank">ความรู้เรื่องเฟิร์น</a></li>
+          <li><a href="https://forfernfarm.wordpress.com/2026/05/09/%f0%9f%8c%a6%ef%b8%8f-%e0%b8%a3%e0%b9%89%e0%b8%ad%e0%b8%99%e0%b8%aa%e0%b8%a5%e0%b8%b1%e0%b8%9a%e0%b8%9d%e0%b8%99-%e0%b9%81%e0%b8%95%e0%b9%88%e0%b8%ad%e0%b8%9a%e0%b8%ad%e0%b9%89%e0%b8%b2%e0%b8%a7/" target="_blank">เทคนิคการดูแล</a></li>
+          <li><a href="https://forfernfarm.wordpress.com/2026/05/03/the-ultimate-guide-%e0%b8%a7%e0%b8%b4%e0%b8%98%e0%b8%b5%e0%b9%80%e0%b8%a5%e0%b8%b7%e0%b8%ad%e0%b8%81%e0%b8%8b%e0%b8%b7%e0%b9%89%e0%b8%ad%e0%b9%80%e0%b8%9f%e0%b8%b4%e0%b8%a3%e0%b9%8c%e0%b8%99%e0%b8%aa/" target="_blank">คู่มือเลือกซื้อเฟิร์น</a></li>
           <li><a href="https://forfernfarm.wordpress.com" target="_blank">กิจกรรมฟาร์ม</a></li>
         </ul>
       </div>
