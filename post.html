@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>บทความ — ฟ.เฟิน.ฟาร์ม</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest:#1a3a2a; --forest-mid:#2d5a3d; --forest-light:#4a7c59;
+  --sage:#7aab8a; --mint:#b8d4c0; --cream:#f7f3ed; --ivory:#fdfaf5;
+  --gold:#c9a96e; --gold-light:#e8d5a3;
+  --text-dark:#1a2018; --text-mid:#3d4a35; --text-light:#6b7a60; --white:#ffffff;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Sarabun',sans-serif; background:var(--ivory); color:var(--text-dark); line-height:1.7; }
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between;
+  background:rgba(253,250,245,0.95); backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(26,58,42,0.08);
+}
+.nav-logo { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--forest); text-decoration:none; }
+.nav-logo span { color:var(--gold); }
+.nav-back {
+  display:inline-flex; align-items:center; gap:0.4rem;
+  color:var(--forest-light); font-size:0.875rem; text-decoration:none;
+  border:1px solid var(--mint); padding:0.4rem 1rem; border-radius:100px; transition:all 0.2s;
+}
+.nav-back:hover { background:var(--mint); color:var(--forest); }
+
+/* HERO */
+.post-hero {
+  padding-top:70px; min-height:420px; position:relative;
+  display:flex; align-items:flex-end;
+  background:var(--forest-mid);
+}
+.post-hero-img {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.45;
+}
+.post-hero-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(26,58,42,0.92) 0%, rgba(26,58,42,0.3) 60%, transparent 100%);
+}
+.post-hero-content {
+  position:relative; z-index:1; padding:3rem 2rem;
+  max-width:780px; margin:0 auto; width:100%;
+}
+.post-cat-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  background:rgba(201,169,110,0.2); border:1px solid rgba(201,169,110,0.35);
+  color:var(--gold-light); font-size:0.72rem; letter-spacing:0.1em;
+  padding:0.35rem 0.9rem; border-radius:100px; margin-bottom:1rem;
+}
+.post-hero-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.75rem,4vw,2.75rem);
+  color:var(--white); line-height:1.2; margin-bottom:1rem;
+}
+.post-meta {
+  display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap;
+  color:rgba(255,255,255,0.6); font-size:0.82rem;
+}
+.post-meta-sep { opacity:0.3; }
+
+/* CONTENT */
+.post-wrap { max-width:780px; margin:0 auto; padding:3rem 2rem; }
+
+.post-excerpt {
+  font-size:1.1rem; color:var(--text-mid); line-height:1.85;
+  border-left:3px solid var(--gold); padding-left:1.25rem;
+  margin-bottom:2.5rem; font-style:italic;
+}
+
+/* Rendered markdown */
+.post-body { font-size:1rem; line-height:1.95; color:var(--text-dark); }
+.post-body h2 {
+  font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--forest);
+  margin:2.5rem 0 1rem; padding-bottom:0.5rem;
+  border-bottom:1px solid rgba(26,58,42,0.1);
+}
+.post-body h3 {
+  font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--forest-mid);
+  margin:2rem 0 0.75rem;
+}
+.post-body p { margin-bottom:1.25rem; }
+.post-body strong { color:var(--text-dark); font-weight:600; }
+.post-body em { font-style:italic; color:var(--text-mid); }
+.post-body ul, .post-body ol { margin:1rem 0 1.25rem 1.5rem; }
+.post-body li { margin-bottom:0.4rem; }
+.post-body blockquote {
+  border-left:3px solid var(--gold); padding:0.75rem 1.25rem;
+  margin:1.5rem 0; background:var(--cream); border-radius:0 10px 10px 0;
+  color:var(--text-mid); font-style:italic;
+}
+.post-body hr { border:none; border-top:1px solid rgba(26,58,42,0.12); margin:2rem 0; }
+
+/* SHARE */
+.share-block {
+  margin-top:3rem; padding-top:2rem;
+  border-top:1px solid rgba(26,58,42,0.1);
+}
+.share-label {
+  font-size:0.78rem; letter-spacing:0.1em; color:var(--sage);
+  text-transform:uppercase; margin-bottom:0.75rem;
+}
+.share-btns { display:flex; gap:0.75rem; flex-wrap:wrap; }
+.share-btn {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  padding:0.65rem 1.25rem; border-radius:100px;
+  font-family:'Sarabun',sans-serif; font-size:0.875rem;
+  text-decoration:none; font-weight:500; transition:all 0.2s; cursor:pointer; border:none;
+}
+.share-fb { background:#1877f2; color:#fff; }
+.share-fb:hover { background:#1558c0; }
+.share-line { background:#00b900; color:#fff; }
+.share-line:hover { background:#009400; }
+.share-copy { background:var(--cream); color:var(--text-mid); border:1px solid #ddd; }
+.share-copy:hover { background:var(--mint); color:var(--forest); border-color:var(--mint); }
+
+/* BACK BTN */
+.post-back-wrap { margin-top:3rem; }
+.post-back-link {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  color:var(--forest-light); text-decoration:none; font-size:0.9rem;
+  border:1px solid var(--mint); padding:0.65rem 1.5rem; border-radius:100px; transition:all 0.2s;
+}
+.post-back-link:hover { background:var(--forest); color:var(--white); border-color:var(--forest); }
+
+/* LOADING */
+.loading-wrap { text-align:center; padding:6rem 2rem; color:var(--text-light); }
+.spinner {
+  width:36px; height:36px; border:3px solid var(--mint); border-top-color:var(--forest);
+  border-radius:50%; animation:spin 0.7s linear infinite; margin:0 auto 1rem;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+
+@media(max-width:640px) {
+  nav { padding:0.85rem 1.25rem; }
+  .post-hero-content { padding:2rem 1.25rem; }
+  .post-wrap { padding:2rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">ฟ.เฟิน.<span>ฟาร์ม</span></a>
+  <a href="index.html#blog" class="nav-back">← บทความทั้งหมด</a>
+</nav>
+
+<div id="app">
+  <div class="loading-wrap">
+    <div class="spinner"></div>
+    <div>กำลังโหลด…</div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// ══════════════════════════════════════════
+//  🔧 ตั้งค่า Firebase — วาง config ที่นี่ (เหมือนกับ admin.html)
+// ══════════════════════════════════════════
+const firebaseConfig = {
+  apiKey:            "AIzaSyAzDmC2vhpnpX-Y6p4AF8-rjNaJ85qOJm8",
+  authDomain:        "forfermfarm.firebaseapp.com",
+  projectId:         "forfermfarm",
+  storageBucket:     "forfermfarm.firebasestorage.app",
+  messagingSenderId: "901153337167",
+  appId:             "1:901153337167:web:79655dc0097355ddda5f3a"
+};
+// ══════════════════════════════════════════
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+const params = new URLSearchParams(location.search);
+const postId = params.get('id');
+
+async function loadPost() {
+  const appEl = document.getElementById('app');
+  if (!postId) {
+    appEl.innerHTML = `<div class="loading-wrap">ไม่พบบทความ</div>`; return;
+  }
+  try {
+    const snap = await getDoc(doc(db,'posts',postId));
+    if (!snap.exists() || snap.data().status !== 'published') {
+      appEl.innerHTML = `<div class="loading-wrap">ไม่พบบทความนี้</div>`; return;
+    }
+    const p = snap.data();
+    document.title = p.title + ' — ฟ.เฟิน.ฟาร์ม';
+    const pageUrl = encodeURIComponent(location.href);
+    const pageTitle = encodeURIComponent(p.title);
+
+    appEl.innerHTML = `
+      <div class="post-hero" id="post-hero">
+        ${p.img ? `<img class="post-hero-img" src="${p.img}" alt="${p.title}">` : ''}
+        <div class="post-hero-overlay"></div>
+        <div class="post-hero-content">
+          <div class="post-cat-badge">🌿 ${p.category || 'บทความ'}</div>
+          <h1 class="post-hero-title">${p.title}</h1>
+          <div class="post-meta">
+            <span>${p.date || ''}</span>
+            ${p.date ? '<span class="post-meta-sep">·</span>' : ''}
+            <span>ฟ.เฟิน.ฟาร์ม</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-wrap">
+        ${p.excerpt ? `<div class="post-excerpt">${p.excerpt}</div>` : ''}
+        <div class="post-body" id="post-body"></div>
+
+        <div class="share-block">
+          <div class="share-label">แชร์บทความนี้</div>
+          <div class="share-btns">
+            <a class="share-btn share-fb"
+               href="https://www.facebook.com/sharer/sharer.php?u=${pageUrl}"
+               target="_blank" rel="noopener">
+              f&nbsp; แชร์ Facebook
+            </a>
+            <a class="share-btn share-line"
+               href="https://social-plugins.line.me/lineit/share?url=${pageUrl}"
+               target="_blank" rel="noopener">
+              L&nbsp; ส่งให้เพื่อน LINE
+            </a>
+            <button class="share-btn share-copy" onclick="copyLink()">
+              🔗 คัดลอกลิงก์
+            </button>
+          </div>
+        </div>
+
+        <div class="post-back-wrap">
+          <a href="index.html#blog" class="post-back-link">← กลับดูบทความทั้งหมด</a>
+        </div>
+      </div>`;
+
+    // render markdown
+    document.getElementById('post-body').innerHTML = renderMarkdown(p.content || '');
+  } catch(e) {
+    document.getElementById('app').innerHTML =
+      `<div class="loading-wrap" style="color:#c0392b">โหลดบทความไม่สำเร็จ: ${e.message}</div>`;
+  }
+}
+
+function renderMarkdown(text) {
+  return text
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm,  '<h2>$1</h2>')
+    .replace(/^---$/gm, '<hr>')
+    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, m => '<ul>'+m+'</ul>')
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<[hublp])(.+)$/gm, '<p>$1</p>')
+    .replace(/<p><\/p>/g,'')
+    .replace(/<p>(<[hublhr])/g,'$1')
+    .replace(/(<\/[hublhr][^>]*>)<\/p>/g,'$1');
+}
+
+window.copyLink = () => {
+  navigator.clipboard.writeText(location.href).then(() => {
+    const btn = document.querySelector('.share-copy');
+    btn.textContent = '✓ คัดลอกแล้ว!';
+    setTimeout(()=>{ btn.innerHTML = '🔗 คัดลอกลิงก์'; }, 2000);
+  });
+};
+
+loadPost();
+</script>
+</body>
+</html>

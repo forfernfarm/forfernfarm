@@ -511,6 +511,7 @@ section { padding: 5rem 0; }
   transition: transform 0.3s, box-shadow 0.3s;
   text-decoration: none;
   display: block;
+  cursor: pointer;
 }
 .blog-card:hover {
   transform: translateY(-4px);
@@ -924,7 +925,7 @@ footer {
         <div class="section-label">ความรู้จากฟาร์ม</div>
         <h2 class="section-title">บทความและกิจกรรม</h2>
       </div>
-      <a href="https://forfernfarm.wordpress.com" target="_blank" class="blog-all">ดูทั้งหมด →</a>
+      <a href="#blog" class="blog-all">ดูทั้งหมด →</a>
     </div>
 
     <div class="blog-grid" id="blog-grid"></div>
@@ -982,10 +983,10 @@ footer {
       <div>
         <div class="footer-col-title">บทความ</div>
         <ul class="footer-links">
-          <li><a href="https://forfernfarm.wordpress.com/2026/05/24/%f0%9f%8c%a6%ef%b8%8f-%e0%b8%a3%e0%b9%89%e0%b8%ad%e0%b8%99%e0%b8%aa%e0%b8%a5%e0%b8%b1%e0%b8%9a%e0%b8%9d%e0%b8%99-%e0%b9%81%e0%b8%95%e0%b9%88%e0%b8%ad%e0%b8%9a%e0%b8%ad%e0%b9%89%e0%b8%b2%e0%b8%a7-2/" target="_blank">ความรู้เรื่องเฟิร์น</a></li>
-          <li><a href="https://forfernfarm.wordpress.com/2026/05/09/%f0%9f%8c%a6%ef%b8%8f-%e0%b8%a3%e0%b9%89%e0%b8%ad%e0%b8%99%e0%b8%aa%e0%b8%a5%e0%b8%b1%e0%b8%9a%e0%b8%9d%e0%b8%99-%e0%b9%81%e0%b8%95%e0%b9%88%e0%b8%ad%e0%b8%9a%e0%b8%ad%e0%b9%89%e0%b8%b2%e0%b8%a7/" target="_blank">เทคนิคการดูแล</a></li>
-          <li><a href="https://forfernfarm.wordpress.com/2026/05/03/the-ultimate-guide-%e0%b8%a7%e0%b8%b4%e0%b8%98%e0%b8%b5%e0%b9%80%e0%b8%a5%e0%b8%b7%e0%b8%ad%e0%b8%81%e0%b8%8b%e0%b8%b7%e0%b9%89%e0%b8%ad%e0%b9%80%e0%b8%9f%e0%b8%b4%e0%b8%a3%e0%b9%8c%e0%b8%99%e0%b8%aa/" target="_blank">คู่มือเลือกซื้อเฟิร์น</a></li>
-          <li><a href="https://forfernfarm.wordpress.com" target="_blank">กิจกรรมฟาร์ม</a></li>
+          <li><a href="#blog">ความรู้เรื่องเฟิร์น</a></li>
+          <li><a href="#blog">เทคนิคการดูแล</a></li>
+          <li><a href="#blog">แรงบันดาลใจ</a></li>
+          <li><a href="#blog">กิจกรรมฟาร์ม</a></li>
         </ul>
       </div>
       <div>
@@ -1005,6 +1006,74 @@ footer {
 </footer>
 
 <script src="data.js"></script>
+
+<!-- Firebase Blog Loader -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs, query, orderBy, limit, where }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// ══════════════════════════════════════════
+//  🔧 ตั้งค่า Firebase — วาง config ที่นี่ (เหมือนกับ admin.html)
+// ══════════════════════════════════════════
+const firebaseConfig = {
+  apiKey:            "AIzaSyAzDmC2vhpnpX-Y6p4AF8-rjNaJ85qOJm8",
+  authDomain:        "forfermfarm.firebaseapp.com",
+  projectId:         "forfermfarm",
+  storageBucket:     "forfermfarm.firebasestorage.app",
+  messagingSenderId: "901153337167",
+  appId:             "1:901153337167:web:79655dc0097355ddda5f3a"
+};
+// ══════════════════════════════════════════
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+async function loadFirebaseBlog() {
+  const grid = document.getElementById('blog-grid');
+  if (!grid) return;
+  try {
+    const q = query(
+      collection(db,'posts'),
+      where('status','==','published'),
+      orderBy('createdAt','desc'),
+      limit(3)
+    );
+    const snap = await getDocs(q);
+    if (snap.empty) return; // ยังไม่มีบทความ ใช้ data.js แทน
+    grid.innerHTML = '';
+    snap.forEach((d, i) => {
+      const p = d.data();
+      const card = document.createElement('a');
+      card.className = 'blog-card' + (i===0 ? ' featured' : '');
+      card.href = `post.html?id=${d.id}`;
+      card.innerHTML = `
+        <div class="blog-img">
+          <img src="${p.img||''}" alt="${p.title}"
+               loading="lazy"
+               onerror="this.parentElement.innerHTML='<div style=\\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;color:rgba(255,255,255,0.4)\\'>🌿</div>'">
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">${p.category||'บทความ'}</div>
+          <div class="blog-title">${p.title}</div>
+          <p class="blog-excerpt">${p.excerpt||''}</p>
+          <div class="blog-date">${p.date||''}</div>
+        </div>`;
+      grid.appendChild(card);
+    });
+    // re-observe new cards for scroll animation
+    document.querySelectorAll('.blog-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  } catch(e) {
+    console.warn('Firebase blog load failed, using data.js fallback:', e.message);
+  }
+}
+loadFirebaseBlog();
+</script>
 <script>
 // Navbar scroll effect
 window.addEventListener('scroll', () => {
