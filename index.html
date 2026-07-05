@@ -1032,6 +1032,8 @@ const db  = getFirestore(app);
 async function loadFirebaseBlog() {
   const grid = document.getElementById('blog-grid');
   if (!grid) return;
+  // แสดง loading
+  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:#6b7a60;">กำลังโหลดบทความ…</div>';
   try {
     const q = query(
       collection(db,'posts'),
@@ -1040,7 +1042,10 @@ async function loadFirebaseBlog() {
       limit(3)
     );
     const snap = await getDocs(q);
-    if (snap.empty) return; // ยังไม่มีบทความ ใช้ data.js แทน
+    if (snap.empty) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:2rem;color:#6b7a60;">ยังไม่มีบทความที่เผยแพร่</div>';
+      return;
+    }
     grid.innerHTML = '';
     snap.forEach((d, i) => {
       const p = d.data();
@@ -1061,12 +1066,15 @@ async function loadFirebaseBlog() {
         </div>`;
       grid.appendChild(card);
     });
-    // re-observe new cards for scroll animation
+    // re-observe new cards for scroll animation (observer may not be ready yet)
     document.querySelectorAll('.blog-card').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
+      setTimeout(() => {
+        if (typeof observer !== 'undefined') observer.observe(el);
+        else { el.style.opacity = '1'; el.style.transform = 'none'; }
+      }, 100);
     });
   } catch(e) {
     console.warn('Firebase blog load failed, using data.js fallback:', e.message);
